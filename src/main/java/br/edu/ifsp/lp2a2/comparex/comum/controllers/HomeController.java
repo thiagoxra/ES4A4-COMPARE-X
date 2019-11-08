@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-class HomeController{
+public class HomeController{
    @GetMapping("/")
    public String index(Model model){
         return "comum/index";
