@@ -36,6 +36,9 @@ configurations {
         extendsFrom testImplementation
     }
 }
+task partTest( type: Test ){
+	exclude '**/e2e/**'
+}
 task cucumber() {
     dependsOn assemble, compileTestJava
     doLast {

@@ -1,0 +1,15 @@
+dist: ubuntu
+language: java
+jdk:
+ - oraclejdk8
+node_js: 
+ 7
+before_script:
+ - npm install -g phantomjs
+ - ./gradlew bootRun &
+script:
+ - ./gradlew partTest
+ - ./gradlew cucumber
+
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
