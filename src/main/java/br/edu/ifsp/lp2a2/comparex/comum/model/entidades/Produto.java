@@ -11,7 +11,7 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String descricao;
-
+    private Long pontuacao;
     public Long getId() {
         return id;
     }
@@ -27,4 +27,12 @@ public class Produto {
     public void setId(Long id) {
         this.id = id;
     }
+    public void adicionarPontuacao(){
+        ++this.pontuacao;
+    }
+    
+    public Long getPontuacao(){
+        return this.pontuacao;
+    }
+
 }
