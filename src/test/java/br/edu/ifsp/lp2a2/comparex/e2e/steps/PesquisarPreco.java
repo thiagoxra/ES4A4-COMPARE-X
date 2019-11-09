@@ -40,7 +40,7 @@ public class PesquisarPreco {
     public void redirect(String to){
         String actual = this.driver.getTitle();
         String expected = "Resultado da busca";
-        assertEquals(expected, actual);
+        assertTrue("mensagem válida", actual.contains(expected) );;
         this.driver.close();
     }
 
