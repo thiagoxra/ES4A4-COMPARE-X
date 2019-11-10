@@ -1,6 +1,10 @@
 package br.edu.ifsp.lp2a2.comparex.comum.controllers;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +20,13 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView list(){
         ModelAndView mv = new ModelAndView("comum/index");
-        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        List<Produto> produtos = new ArrayList<Produto>();
         repository.findAll().forEach(produtos::add);
-
-
-        mv.addObject("produtos", produtos);
+        // Deve ser optimizado
+        mv.addObject("produtos", produtos
+                                .stream()
+                                .sorted(Comparator.reverseOrder())
+                                .collect(Collectors.toList()));
         return mv;
     }
    @GetMapping(value = "/search", params = {"pesquisar"})
