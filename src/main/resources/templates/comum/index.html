@@ -6,10 +6,18 @@
     </head>
     <body>
         <h1>Comparex</h1>
-        l
         <form method="GET" th:action="@{/search}">
             <input name="pesquisar" type="search">
             <button class="botao-submit" id="comparar" th:type="submit">Comparar</button>
         </form>
+        <ul>
+            <th:block th:each="produto : ${produtos}">
+                <li> 
+                    <h3 th:text="${produto.descricao}"></h3>
+                    
+                    
+                </li>
+            </th:block>
+        </ul>
     </body>
 </html>
