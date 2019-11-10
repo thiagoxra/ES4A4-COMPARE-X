@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
+import br.edu.ifsp.lp2a2.comparex.comum.services.ComparadorProdutosService;
 
 @Controller
 public class HomeController {
@@ -26,13 +27,9 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView list(){
         ModelAndView mv = new ModelAndView("comum/index");
-        List<Produto> produtos = new ArrayList<Produto>();
-        repository.findAll().forEach(produtos::add);
+        ComparadorProdutosService comparador = new ComparadorProdutosService(repository);
         // Deve ser optimizado
-        mv.addObject("produtos", produtos
-                                .stream()
-                                .sorted(Comparator.reverseOrder())
-                                .collect(Collectors.toList()));
+        mv.addObject("produtos", comparador.comparadorPontuacao(5));
         return mv;
     }
    @GetMapping(value = "/search", params = {"pesquisar"})
