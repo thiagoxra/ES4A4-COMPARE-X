@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produto {
+public class Produto implements Comparable<Produto> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,5 +34,23 @@ public class Produto {
     public Long getPontuacao(){
         return this.pontuacao;
     }
-
+    @Override
+    public int compareTo(Produto another){
+        return (this.pontuacao == another.pontuacao) ? 0 : 
+               (this.pontuacao > another.pontuacao) ? 1 :
+               -1;
+    }
+    public Produto(){}
+    public Produto(Long id, String descricao, Long pontuacao){
+        this.id = id;
+        this.descricao = descricao;
+        this.pontuacao = pontuacao;
+    }
+    @Override
+    public boolean equals(Object obj){
+        Produto another = (Produto) obj;
+        return (this.id == another.id && 
+                this.descricao == another.descricao &&
+                this.pontuacao == another.pontuacao);
+    }
 }
