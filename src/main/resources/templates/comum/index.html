@@ -14,7 +14,7 @@
             <th:block th:each="produto : ${produtos}">
                 <li> 
                     <h3 th:text="${produto.descricao}"></h3>
-                    
+                    <p th:text="${produto.pontuacao}"></p>
                     
                 </li>
             </th:block>
