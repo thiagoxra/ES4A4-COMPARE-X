@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <meta charset="UTF-8">
@@ -10,19 +12,24 @@
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/fontawesome.min.css">
 
     <title>compareX</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
+
 <body>
     <nav class="navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="#">CompareX</a>
-        <input class="form-control form-control-danger w-50" type="text" placeholder="digite o produto"
-            aria-label="Search">
-        <div class="col-sm-4">
-            <button type="button" class="btn btn-warning">Pesquisar  <img src="img/search-solid.svg" alt="" height="14" width="14"></button>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-            aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <form method="GET" th:action="@{/search}">
+            <input class="form-control form-control-danger w-50" type="text" placeholder="digite o produto"
+                aria-label="Search">
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-warning">Pesquisar <img src="img/search-solid.svg" alt=""
+                        height="14" width="14"></button>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </form>
     </nav>
     <div class="container">
         <div class="nav-scroller py-1 mb-2">
@@ -44,67 +51,45 @@
     </hr>
     <div class="container">
         <div class="card-deck">
-            <div class="card">
-                <img src="img/massa2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Argamassa</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    </p>
-                    <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/massa2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Argamassa</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    </p>
-                    <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/massa3.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Argamassa</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-
+            <th:block th:each="produto : ${produtos}">
+                <div class="card">
+                    <img src="img/massa2.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title " th:text="${produto.titulo}"></h5> ></h5>
+                        <p class="card-text" th:text="${produto.descricao}"></p>
                         <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
-                </div>
-            </div>
+                    </div>
+                </div>       
         </div>
-       
     </div>
     <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
-            <div class="row">
-                <div class="col-12 col-md">
-                    <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2019</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Classificação</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Produtos</a></li>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Mais sobre</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#"> Quem somos</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Sobre nós</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Equipe</a></li>
-                    </ul>
-                </div>
+        <div class="row">
+            <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">&copy; 2019</small>
             </div>
-        </footer>
+            <div class="col-6 col-md">
+                <h5>Classificação</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Produtos</a></li>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Mais sobre</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#"> Quem somos</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Sobre nós</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Equipe</a></li>
+                </ul>
+            </div>
+        </div>
 
-
+    </footer>
 </body>
-
 </html>
 
 
@@ -119,6 +104,5 @@
     crossorigin="anonymous"></script>
 
 </body>
-
 
 </html>
