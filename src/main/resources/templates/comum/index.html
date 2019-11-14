@@ -22,7 +22,7 @@
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text" placeholder="digite o produto"
                 aria-label="Search">
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-warning">Pesquisar <img th:src="@{/img/search-solid.svg}" alt=""
+                <button type="submit" id="comparar" class="btn btn-warning">Pesquisar <img th:src="@{/img/search-solid.svg}" alt=""
                         height="14" width="14"></button>
                         <!--<input type="submit" value="Pesquisar">-->
             </div>
@@ -54,7 +54,7 @@
         <div class="card-deck">
             <th:block th:each="produto : ${produtos}">
                 <div class="card">
-                    <img th:src="${produto.imagem}" class="card-img-top" alt="...">
+                    <img th:src="@{produto.imagem}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title " th:text="${produto.titulo}"></h5> ></h5>
                         <p class="card-text" th:text="${produto.descricao}"></p>
