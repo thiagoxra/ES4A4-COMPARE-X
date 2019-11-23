@@ -35,7 +35,7 @@ public class HomeController {
    @GetMapping(value = "/search", params = {"pesquisar"})
    public String search(String pesquisar){
 
-       return "comum/resultado_busca";
+       return "comum/resultado";
    }
    /**
     * @return the repository
