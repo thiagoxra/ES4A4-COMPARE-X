@@ -13,25 +13,33 @@
 
     <title>compareX</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
+<style>
+form{
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+   
+}
+</style>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+    <div class="container-fluid">
+    <form method="GET" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="#">CompareX</a>
-        <form method="GET" th:action="@{/search}">
-            <input name="pesquisar" class="form-control form-control-danger w-50" type="text" placeholder="digite o produto"
+
+            <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
                 aria-label="Search">
             <div class="col-sm-4">
                 <button type="submit" id="comparar" class="btn btn-warning">Pesquisar <img th:src="@{/img/search-solid.svg}" alt=""
                         height="14" width="14"></button>
-                        <!--<input type="submit" value="Pesquisar">-->
+                      
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </form>
-    </nav>
+        
+          </form>
+
+    </div>
     <div class="container">
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
