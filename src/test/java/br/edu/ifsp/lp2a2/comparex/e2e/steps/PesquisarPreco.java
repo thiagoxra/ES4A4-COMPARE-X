@@ -2,13 +2,14 @@ package br.edu.ifsp.lp2a2.comparex.e2e.steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -35,7 +36,13 @@ public class PesquisarPreco {
         WebElement button = this.driver.findElement(By.id(where));
         button.click();
     }
-
+    @Then("Devo ser redirecionado para a página {string}")
+    public void redirect(String to){
+        String actual = this.driver.getTitle();
+        String expected = "Resultado da busca";
+        assertTrue("mensagem válida", actual.contains(expected) );;
+        this.driver.close();
+    }
 
 
 }
