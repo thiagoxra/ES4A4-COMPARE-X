@@ -1,7 +1,11 @@
 div.formulario {
 	background-color: #FFF;
-	margin: auto;
-	width: 1000px;
+	padding: 25px;
+	text-align: center;
+}
+
+div.formulario input {
+	text-align: center;
 }
 
 form{
