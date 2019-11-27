@@ -34,4 +34,8 @@ out/
 bin/
 
 *.db
+
+target/
+
 gradle.properties
+
