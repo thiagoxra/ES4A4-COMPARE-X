@@ -39,7 +39,7 @@ public class PesquisarPreco {
     @Then("Devo ser redirecionado para a página {string}")
     public void redirect(String to){
         String actual = this.driver.getTitle();
-        String expected = "Resultado da busca";
+        String expected = to;
         assertTrue("mensagem válida", actual.contains(expected) );;
         this.driver.close();
     }
