@@ -1,4 +1,4 @@
-package br.edu.ifsp.lp2a2.comparex.unitarios.entidades;
+/*package br.edu.ifsp.lp2a2.comparex.unitarios.entidades;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,4 +40,4 @@ public class ProdutoTest{
     }
     
 
-}
+}*/

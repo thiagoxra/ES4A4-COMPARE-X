@@ -7,17 +7,42 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
-import br.edu.ifsp.lp2a2.comparex.comum.services.ComparadorProdutosService;
+/*import br.edu.ifsp.lp2a2.comparex.comum.services.ComparadorProdutosService;*/
 
 @Controller
 public class HomeController {
     
+private ProdutosRespository repository;
+	
     public HomeController(ProdutosRespository repository){
+        this.repository = repository;
+    }
+
+   
+    @GetMapping("/")
+	public String index(Model model) {
+ 
+		/*model.addAttribute("produtos", repository.findAll()); */
+		
+		return "comum/index";
+	}
+
+   @PostMapping("/search")
+   public String resultado(Model model) {
+	   model.addAttribute("produtos", repository.findAll()); 
+		return "comum/resultado";
+	}
+	
+	
+	
+    /*public HomeController(ProdutosRespository repository){
         this.repository = repository;
     }
 
@@ -36,11 +61,11 @@ public class HomeController {
    public String search(String pesquisar){
 
        return "comum/resultado";
-   }
+   }*/
    /**
     * @return the repository
     */
-   public ProdutosRespository getRepository() {
+   /*public ProdutosRespository getRepository() {
        return repository;
-   }
+   }*/
 }

@@ -17,7 +17,7 @@
 
 <body>
     <div class="container-fluid">
-    <form method="GET" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+    <form method="post" th:object="${produto}" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
 
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
@@ -46,19 +46,20 @@
     <section>
             <div class="container">
                 <div id="index">
+                <th:block th:each="produto : ${produtos}">
                     <div class="card">
                         <a class="product-image" href="#">
-                            <img src="https://cdn.leroymerlin.com.br/products/argamassa_porcelanato_interno_e_externo_branca_20kg_axton_90185102_ec89_1800x1800.jpg" class="card-img-top" alt="...">
+                            <img th:src="${produto.imagem}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
-                          <h5 class="card-title"><a href="#">Argamassa Porcelanato Interno e Externo Branca 20kg Axton</a></h5>
+                          <h5 class="card-title" th:text="${produto.nome}"><a href="#"></a></h5>
                           <small>a partir de:</small>
                           <p class="card-text">R$ 24,90</p>
                           <small class="card-price">em 35 lojas</small>
                           <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
                         </div>
                     </div>
-                    <div class="card">
+                    <!--<div class="card">
                         <a class="product-image" href="#">
                             <img src="https://cdn.leroymerlin.com.br/products/torneira_para_parede_de_cozinha_cromado_niteroi_delinia_89315345_7699_600x600.jpg" class="card-img-top" alt="...">
                         </a>
@@ -117,7 +118,7 @@
                           <small class="card-price">em 35 lojas</small>
                           <a href="produto-buscado.html" class="btn btn-primary">Ver preços</a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
     </section>

@@ -1,4 +1,4 @@
-package br.edu.ifsp.lp2a2.comparex.unitarios.controller;
+/*package br.edu.ifsp.lp2a2.comparex.unitarios.controller;
 
 import br.edu.ifsp.lp2a2.comparex.comum.controllers.HomeController;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
@@ -44,4 +44,4 @@ public class HomeControllerTest {
         assertEquals(expected, actual);
     }
 
-}
+}*/

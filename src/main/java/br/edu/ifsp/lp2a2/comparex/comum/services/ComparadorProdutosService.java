@@ -1,4 +1,4 @@
-package br.edu.ifsp.lp2a2.comparex.comum.services;
+/*package br.edu.ifsp.lp2a2.comparex.comum.services;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,4 +29,4 @@ public class ComparadorProdutosService{
             return this.comparadorPontuacao();
         }
     }
-}
+}*/
