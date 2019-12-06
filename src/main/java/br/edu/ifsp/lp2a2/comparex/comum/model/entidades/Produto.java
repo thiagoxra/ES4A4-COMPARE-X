@@ -109,6 +109,7 @@ public class Produto implements Comparable<Produto> {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
     public void adicionarPontuacao(){
         ++this.pontuacao;
     }
