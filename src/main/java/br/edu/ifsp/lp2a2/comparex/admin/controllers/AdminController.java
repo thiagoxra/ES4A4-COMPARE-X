@@ -9,7 +9,6 @@ public class AdminController {
 
    @GetMapping("/admin")
    public String exibir(){
-
        return "admin/admin";
    }
 }

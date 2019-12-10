@@ -15,13 +15,8 @@ public class LojaProduto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	/*@Column(name="id_produto")
-	private int idProduto;*/
-	
-	/*@Column(name="id_loja")
-	private int idLoja;*/
-	
+
+
 	private String link;
 	private double preco;
 	
@@ -42,18 +37,6 @@ public class LojaProduto {
 		this.id = id;
 	}
 	
-	/*public int getIdProduto() {
-		return idProduto;
-	}
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
-	}*/
-	/*public int getIdLoja() {
-		return idLoja;
-	}
-	public void setIdLoja(int idLoja) {
-		this.idLoja = idLoja;
-	}*/
 	public String getLink() {
 		return link;
 	}
