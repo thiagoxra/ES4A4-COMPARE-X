@@ -1,0 +1,86 @@
+div.formulario {
+	background-color: #FFF;
+	padding: 25px;
+	text-align: center;
+}
+
+div.formulario input {
+	text-align: center;
+}
+
+form{
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+   
+}
+
+h5.card-title a {
+    text-decoration: none;
+    color: #464646;
+}
+
+h5.card-title a:hover {
+    color: #3db3ff;
+}
+
+small.card-price {
+    font-weight: bold;
+}
+
+
+a.btn.btn-primary {
+    display: block;
+    margin-top: 10px;
+}
+
+p.card-text {
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+div.card-body {
+    padding: 10px 5px;
+}
+
+div.card {
+    padding: 10px;
+}
+
+div.card a.product-image{
+    width: auto;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+}
+
+h5.card-title {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+    height: 54px;
+}
+
+h5.card-title a {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
+
+a.product-image img.card-img-top {
+    height: 200px;
+    width: auto;
+    margin: auto;
+}
+
+body{
+    background-color: #EFEFEF;
+}
+
+div#index {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}

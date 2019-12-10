@@ -13,21 +13,12 @@
 
     <title>compareX</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
-<style>
-form{
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-   
-}
-</style>
 </head>
 
 <body>
     <div class="container-fluid">
-    <form method="GET" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
-        <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="#">CompareX</a>
+    <form method="get" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+        <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
 
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
                 aria-label="Search">
@@ -58,7 +49,7 @@ form{
         <h3 class="">Os mais buscados:</h3>
     </div>
     </hr>
-    <div class="container">
+    <!-- <div class="container">
         <div class="card-deck">
             <th:block th:each="produto : ${produtos}">
                 <div class="card">
@@ -70,7 +61,7 @@ form{
                     </div>
                 </div>       
         </div>
-    </div>
+    </div> -->
     <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
         <div class="row">
             <div class="col-12 col-md">

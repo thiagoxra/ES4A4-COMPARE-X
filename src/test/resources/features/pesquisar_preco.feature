@@ -8,4 +8,4 @@ Feature: Pesquisar os preços de um produto
     Given Estou na página inicial da minha aplicação
     When Eu digito dentro do campo "pesquisar" o texto "cano"
     And clico no botão "comparar"
-    Then Devo ser redirecionado para a página "Resultados da busca"
+    Then Devo ser redirecionado para a página "Resultado da Busca"
