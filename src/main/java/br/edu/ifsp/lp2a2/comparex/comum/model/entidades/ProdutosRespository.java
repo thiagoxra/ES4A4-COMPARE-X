@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProdutosRespository extends CrudRepository<Produto, Long> {
+public interface ProdutosRespository extends CrudRepository<Produto, Integer> {
     // É assim que se faz uma query se for necessário
     // @Query("SELECT p FROM Produto p ORDER BY pontuacao DESC")
     // Iterable<Produto> findByPontuacaoOrder();

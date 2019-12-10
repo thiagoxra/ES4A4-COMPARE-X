@@ -1,9 +1,12 @@
 package br.edu.ifsp.lp2a2.comparex.comum.model.entidades;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto/* implements Comparable<Produto> */{
@@ -15,6 +18,8 @@ public class Produto/* implements Comparable<Produto> */{
     private String nome;
     private String marca;
     
+    @OneToMany(mappedBy="produto")
+    private Set<LojaProduto> lojasProdutos;
     
     public int getId() {
 		return id;
@@ -45,6 +50,12 @@ public class Produto/* implements Comparable<Produto> */{
 	}
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+	public Set<LojaProduto> getLojasProdutos() {
+		return lojasProdutos;
+	}
+	public void setLojasProdutos(Set<LojaProduto> lojasProdutos) {
+		this.lojasProdutos = lojasProdutos;
 	}
 	
 	/*@Id
