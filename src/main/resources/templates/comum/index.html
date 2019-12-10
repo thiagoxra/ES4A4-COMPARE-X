@@ -34,11 +34,7 @@
     <div class="container">
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="#">Categoria 1</a>
-                <a class="p-2 text-muted" href="#">Categoria 2</a>
-                <a class="p-2 text-muted" href="#">Categoria 3</a>
-                <a class="p-2 text-muted" href="#">Categoria 4</a>
-
+                <a class="p-2 text-muted" th:each="loja : ${lojas}" th:text="${loja.nome}" th:href="@{'/loja/'+${loja.id}}"></a>
             </nav>
         </div>
     </div>
@@ -49,19 +45,19 @@
         <h3 class="">Os mais buscados:</h3>
     </div>
     </hr>
-    <!-- <div class="container">
+    <div class="container">
         <div class="card-deck">
             <th:block th:each="produto : ${produtos}">
                 <div class="card">
-                    <img th:src="@{produto.imagem}" class="card-img-top" alt="...">
+                    <img th:src="${produto.imagem}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title " th:text="${produto.titulo}"></h5> ></h5>
-                        <p class="card-text" th:text="${produto.descricao}"></p>
+                        <h5 class="card-title " th:text="${produto.marca}"></h5></h5>
+                        <p class="card-text" th:text="${produto.nome}"></p>
                         <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
                     </div>
                 </div>       
         </div>
-    </div> -->
+    </div>
     <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
         <div class="row">
             <div class="col-12 col-md">
