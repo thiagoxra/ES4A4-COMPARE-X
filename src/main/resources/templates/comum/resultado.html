@@ -17,7 +17,7 @@
 
 <body>
     <div class="container-fluid">
-    <form method="post" th:object="${produto}" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+    <form method="get" th:object="${produto}" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
 
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
