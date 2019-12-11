@@ -25,7 +25,9 @@ public class HomeController {
     }
    
     @GetMapping("/")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("produtos", produtosRepository.findTop3ByOrderByNomeAsc());
+		model.addAttribute("lojas", lojasRepository.findAll());
 		return "comum/index";
 	}
 
@@ -51,5 +53,4 @@ public class HomeController {
 		model.addAttribute("produtos", lojasProdutosRepository.listarPorLoja(id));
 		return "comum/loja";
 	}
-
 }
