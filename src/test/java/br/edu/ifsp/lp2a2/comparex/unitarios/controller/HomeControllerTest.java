@@ -1,9 +1,10 @@
 package br.edu.ifsp.lp2a2.comparex.unitarios.controller;
 
 import br.edu.ifsp.lp2a2.comparex.comum.controllers.HomeController;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,15 +19,17 @@ import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
 
 public class HomeControllerTest {
-    ProdutosRespository repository;
+    ProdutosRespository pRepository;
+    LojasRepository lRepository;
+    LojasProdutosRepository lpRepository;
     HomeController homeController;
     List<Produto> list;
     public HomeControllerTest(){
-        this.repository = Mockito.mock(ProdutosRespository.class);
-        this.homeController = new HomeController(repository);
+        this.pRepository = Mockito.mock(ProdutosRespository.class);
+        this.lRepository = Mockito.mock(LojasRepository.class);
+        this.lpRepository = Mockito.mock(LojasProdutosRepository.class);
+        this.homeController = new HomeController(pRepository, lpRepository, lRepository);
         this.list = new ArrayList<>();
-        this.list.add(new Produto(1, "Massa"));
-        this.list.add(new Produto(2, "Cimento"));
     }
     @Test
     public void resultado_right_address_resultTest(){
@@ -43,7 +46,19 @@ public class HomeControllerTest {
     @Test
     public void index_right_address(){
         String expected = "comum/index";
-        String actual = homeController.index();
+        String actual = homeController.index().getViewName();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void ver_precos_right_address(){
+        String expected = "comum/verprecos";
+        String actual = homeController.verprecos(3).getViewName();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void lojas_right_address(){
+        String expected = "comum/loja";
+        String actual = homeController.lojas(3).getViewName();    
         assertEquals(expected, actual);
     }
 }

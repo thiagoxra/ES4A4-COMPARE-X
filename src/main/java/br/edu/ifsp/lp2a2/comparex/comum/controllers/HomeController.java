@@ -25,32 +25,36 @@ public class HomeController {
     }
    
     @GetMapping("/")
-	public String index(Model model) {
-		model.addAttribute("produtos", produtosRepository.findTop3ByOrderByNomeAsc());
-		model.addAttribute("lojas", lojasRepository.findAll());
-		return "comum/index";
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView("comum/index");
+		mv.addObject("produtos", produtosRepository.findTop3ByOrderByNomeAsc());
+		mv.addObject("lojas", lojasRepository.findAll());
+		return mv;
 	}
 
 	@GetMapping(value = "/search", params = {"pesquisar"})
-	public String resultado(Model model, String pesquisar) {
-		 model.addAttribute("lojas", lojasRepository.findAll());
-		 model.addAttribute("produtos", produtosRepository.findByNomeContaining(pesquisar));
-		 model.addAttribute("precos", lojasProdutosRepository.menorPreco());
-		 model.addAttribute("quantidades", lojasProdutosRepository.quantidadeLojas());
-		 return "comum/resultado";
+	public ModelAndView resultado(String pesquisar) {
+		ModelAndView mv = new ModelAndView("comum/resultado");
+		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("produtos", produtosRepository.findByNomeContaining(pesquisar));
+		mv.addObject("precos", lojasProdutosRepository.menorPreco());
+		mv.addObject("quantidades", lojasProdutosRepository.quantidadeLojas());
+		return mv;
 	 }
 
 	@GetMapping("/verprecos/{id}")
-	public String verprecos(@PathVariable int id, Model model) {
-		model.addAttribute("lojas", lojasRepository.findAll());
-		model.addAttribute("produtos", lojasProdutosRepository.listarPorProduto(id));
-		return "comum/verprecos";
+	public ModelAndView verprecos(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("comum/verprecos");
+		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("produtos", lojasProdutosRepository.listarPorProduto(id));
+		return mv;
 	}
 
 	@GetMapping("/loja/{id}")
-	public String lojas(@PathVariable int id, Model model) {
-		model.addAttribute("lojas", lojasRepository.findAll());
-		model.addAttribute("produtos", lojasProdutosRepository.listarPorLoja(id));
-		return "comum/loja";
+	public ModelAndView lojas(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("comum/loja");
+		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
+		return mv;
 	}
 }
