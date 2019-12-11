@@ -12,18 +12,18 @@ import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
 
 @Controller
 public class HomeController {
-    
+
 	private ProdutosRespository produtosRepository;
 	private LojasProdutosRepository lojasProdutosRepository;
 	private LojasRepository lojasRepository;
-	
-    public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository){
+
+	public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository) {
 		this.produtosRepository = produtosRepository;
 		this.lojasProdutosRepository = lojasProdutosRepository;
 		this.lojasRepository = lojasRepository;
-    }
-   
-    @GetMapping("/")
+	}
+
+	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("comum/index");
 		mv.addObject("produtos", produtosRepository.findTop3ByOrderByNomeAsc());
@@ -31,7 +31,9 @@ public class HomeController {
 		return mv;
 	}
 
-	@GetMapping(value = "/search", params = {"pesquisar"})
+	@GetMapping(value = "/search", params = {
+		"pesquisar"
+	})
 	public ModelAndView resultado(String pesquisar) {
 		ModelAndView mv = new ModelAndView("comum/resultado");
 		mv.addObject("lojas", lojasRepository.findAll());
@@ -39,13 +41,33 @@ public class HomeController {
 		mv.addObject("precos", lojasProdutosRepository.menorPreco());
 		mv.addObject("quantidades", lojasProdutosRepository.quantidadeLojas());
 		return mv;
-	 }
+	}
 
 	@GetMapping("/verprecos/{id}")
 	public ModelAndView verprecos(@PathVariable int id) {
 		ModelAndView mv = new ModelAndView("comum/verprecos");
 		mv.addObject("lojas", lojasRepository.findAll());
 		mv.addObject("produtos", lojasProdutosRepository.listarPorProduto(id));
+		return mv;
+	}
+
+	@GetMapping(value = "/verprecos/{id}", params = {
+		"ordenacao"
+	})
+	public ModelAndView ordenarEmVerPrecos(@PathVariable int id, String ordenacao) {
+		ModelAndView mv = new ModelAndView("comum/verprecos");
+		mv.addObject("lojas", lojasRepository.findAll());
+		if (ordenacao.equals("relevancia")) {
+			mv.addObject("produtos", lojasProdutosRepository.listarPorProduto(id));
+		} else if (ordenacao.equals("menorpreco")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorPrecoEmVerPrecos(id));
+		} else if (ordenacao.equals("maiorpreco")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMaiorPrecoEmVerPrecos(id));
+		} else if (ordenacao.equals("maiornomeloja")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMaiorNomeLojaEmVerPrecos(id));
+		} else if (ordenacao.equals("menornomeloja")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorNomeLojaEmVerPrecos(id));
+		}
 		return mv;
 	}
 
@@ -57,11 +79,13 @@ public class HomeController {
 		return mv;
 	}
 
-	@GetMapping(value = "/loja/{id}", params = {"ordenacao"})
+	@GetMapping(value = "/loja/{id}", params = {
+		"ordenacao"
+	})
 	public ModelAndView ordenarEmLojas(@PathVariable int id, String ordenacao) {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
-		if(ordenacao.equals("relevancia")){
+		if (ordenacao.equals("relevancia")) {
 			mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
 		} else if (ordenacao.equals("menorpreco")) {
 			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorPrecoEmLoja(id));

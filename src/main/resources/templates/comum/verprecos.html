@@ -40,6 +40,16 @@
     </div>
     <hr>
     <section>
+        <div class="container">
+                <div id="ordenacao">
+                    <p>Ordenar por:</p>
+                    <p><a th:href="@{?ordenacao=relevancia}">Relevância</a></p>
+                    <p><a th:href="@{?ordenacao=maiorpreco}">Maior Preço</a></p>
+                    <p><a th:href="@{?ordenacao=menorpreco}">Menor Preço</a></p>
+                    <p><a th:href="@{?ordenacao=menornomeloja}">Nome Loja (A-Z)</a></p>
+                    <p><a th:href="@{?ordenacao=maiornomeloja}">Nome Loja (Z-A)</a></p>
+                </div>
+            </div>
             <div class="container">
                 <div id="index">
                 <!-- <th:block th:each="produto : ${produtos}"> -->

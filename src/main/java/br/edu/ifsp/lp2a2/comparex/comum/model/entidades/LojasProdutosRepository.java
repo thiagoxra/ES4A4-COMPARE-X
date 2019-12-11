@@ -29,4 +29,16 @@ public interface LojasProdutosRepository extends CrudRepository<LojaProduto, Int
 
     @Query("select new br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ResultadoLojaProduto(p.id, p.imagem, p.nome, p.marca, lp.link, lp.preco, l.nome) from Produto p, LojaProduto lp, Loja l where p.id = lp.idProduto and lp.idLoja = l.id and lp.idProduto = ?1")
     List<ResultadoLojaProduto> listarPorProduto(int id);
+
+    @Query("select new br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ResultadoLojaProduto(p.id, p.imagem, p.nome, p.marca, lp.link, lp.preco, l.nome) from Produto p, LojaProduto lp, Loja l where p.id = lp.idProduto and lp.idLoja = l.id and lp.idProduto = ?1 order by lp.preco")
+    List<ResultadoLojaProduto> ordenarPorMenorPrecoEmVerPrecos(int id);
+
+    @Query("select new br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ResultadoLojaProduto(p.id, p.imagem, p.nome, p.marca, lp.link, lp.preco, l.nome) from Produto p, LojaProduto lp, Loja l where p.id = lp.idProduto and lp.idLoja = l.id and lp.idProduto = ?1 order by lp.preco desc")
+    List<ResultadoLojaProduto> ordenarPorMaiorPrecoEmVerPrecos(int id);
+
+    @Query("select new br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ResultadoLojaProduto(p.id, p.imagem, p.nome, p.marca, lp.link, lp.preco, l.nome) from Produto p, LojaProduto lp, Loja l where p.id = lp.idProduto and lp.idLoja = l.id and lp.idProduto = ?1 order by l.nome")
+    List<ResultadoLojaProduto> ordenarPorMenorNomeLojaEmVerPrecos(int id);
+
+    @Query("select new br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ResultadoLojaProduto(p.id, p.imagem, p.nome, p.marca, lp.link, lp.preco, l.nome) from Produto p, LojaProduto lp, Loja l where p.id = lp.idProduto and lp.idLoja = l.id and lp.idProduto = ?1 order by l.nome desc")
+    List<ResultadoLojaProduto> ordenarPorMaiorNomeLojaEmVerPrecos(int id);
 }
