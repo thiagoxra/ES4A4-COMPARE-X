@@ -6,7 +6,6 @@ import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -16,10 +15,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 public class HomeControllerTest {
+    @Mock
+    private Model model;
     private ProdutosRespository produtosRepository;
 	private LojasProdutosRepository lojasProdutosRepository;
 	private LojasRepository lojasRepository;
@@ -49,7 +52,14 @@ public class HomeControllerTest {
     @Test
     public void index_right_address(){
         String expected = "comum/index";
-        String actual = homeController.index();
+        String actual = homeController.index(model);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void endereco_lojas_correto() {
+        String esperado = "comum/loja";
+        String atual = homeController.lojas(1, model);
+        assertEquals(esperado, atual);
     }
 }
