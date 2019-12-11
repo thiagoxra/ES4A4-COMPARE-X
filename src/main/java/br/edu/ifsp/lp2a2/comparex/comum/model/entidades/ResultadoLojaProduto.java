@@ -22,6 +22,21 @@ public class ResultadoLojaProduto {
         this.preco = preco;
     }
 
+    public ResultadoLojaProduto(Integer id, Double preco){
+        this.id = id;
+        this.preco = preco;
+    }
+
+    private Double preco;
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+
     public Integer getId() {
         return id;
     }

@@ -45,4 +45,11 @@ public class HomeController {
 		return "comum/verprecos";
 	}
 
+	@GetMapping("/loja/{id}")
+	public String lojas(@PathVariable int id, Model model) {
+		model.addAttribute("lojas", lojasRepository.findAll());
+		model.addAttribute("produtos", lojasProdutosRepository.listarPorLoja(id));
+		return "comum/loja";
+	}
+
 }
