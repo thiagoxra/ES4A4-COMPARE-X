@@ -1,7 +1,6 @@
 package br.edu.ifsp.lp2a2.comparex.comum.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +54,24 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
 		mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
+		return mv;
+	}
+
+	@GetMapping(value = "/loja/{id}", params = {"ordenacao"})
+	public ModelAndView ordenarEmLojas(@PathVariable int id, String ordenacao) {
+		ModelAndView mv = new ModelAndView("comum/loja");
+		mv.addObject("lojas", lojasRepository.findAll());
+		if(ordenacao.equals("relevancia")){
+			mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
+		} else if (ordenacao.equals("menorpreco")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorPrecoEmLoja(id));
+		} else if (ordenacao.equals("maiorpreco")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMaiorPrecoEmLoja(id));
+		} else if (ordenacao.equals("maiornome")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMaiorNomeEmLoja(id));
+		} else if (ordenacao.equals("menornome")) {
+			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorNomeEmLoja(id));
+		}
 		return mv;
 	}
 }

@@ -88,3 +88,9 @@ div#index {
 p#id-produto {
     font-size: 10px;
 }
+
+div#ordenacao {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 10px;
+}
