@@ -3,6 +3,7 @@ package br.edu.ifsp.lp2a2.comparex.comum.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
@@ -36,5 +37,12 @@ public class HomeController {
 		 model.addAttribute("quantidades", lojasProdutosRepository.quantidadeLojas());
 		 return "comum/resultado";
 	 }
+
+	@GetMapping("/verprecos/{id}")
+	public String verprecos(@PathVariable int id, Model model) {
+		model.addAttribute("lojas", lojasRepository.findAll());
+		model.addAttribute("produtos", lojasProdutosRepository.listarPorProduto(id));
+		return "comum/verprecos";
+	}
 
 }
