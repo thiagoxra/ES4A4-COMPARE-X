@@ -71,11 +71,11 @@ public class HomeControllerTest {
         assertEquals(esperado, atual);
     }
 
-    /*@Test
+    @Test
     public void endereco_correto_em_ordenarEmLojas() {
         ModelAndView atualmv = homeController.ordenarEmLojas(1, "menorpreco");
         String esperado = "comum/loja";
-        ModelAndView atual = atualmv.getViewName();
+        String atual = atualmv.getViewName();
         assertEquals(esperado, atual);
     }
 
@@ -85,7 +85,7 @@ public class HomeControllerTest {
         String esperado = "comum/verprecos";
         String atual = atualmv.getViewName();
         assertEquals(esperado, atual);
-    }*/
+    }
 
 
 }
