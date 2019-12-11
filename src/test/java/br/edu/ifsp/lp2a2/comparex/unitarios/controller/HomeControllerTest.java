@@ -67,7 +67,7 @@ public class HomeControllerTest {
     @Test
     public void endereco_lojas_correto() {
         String esperado = "comum/loja";
-        String atual = homeController.lojas(1, model);
+        String atual = homeController.lojas(1).getViewName();
         assertEquals(esperado, atual);
     }
 }
