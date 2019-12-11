@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 public class HomeControllerTest {
@@ -60,5 +62,12 @@ public class HomeControllerTest {
         String expected = "comum/loja";
         String actual = homeController.lojas(3).getViewName();    
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void endereco_lojas_correto() {
+        String esperado = "comum/loja";
+        String atual = homeController.lojas(1, model);
+        assertEquals(esperado, atual);
     }
 }
