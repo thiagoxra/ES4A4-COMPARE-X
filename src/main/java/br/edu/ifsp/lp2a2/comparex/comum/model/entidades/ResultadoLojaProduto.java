@@ -10,10 +10,17 @@ public class ResultadoLojaProduto {
     private String link;
     private String nomeLoja;
 
+    public ResultadoLojaProduto(Integer id, Double preco){
+        this.id = id;
+        this.preco = preco;
+    }
+
     public ResultadoLojaProduto(Integer id, Long quantidade){
         this.id = id;
         this.quantidade = quantidade;
     }
+
+    
 
     public ResultadoLojaProduto(Integer id, String imagem, String nome, String marca, String link, Double preco) {
         this.id = id;
@@ -21,11 +28,6 @@ public class ResultadoLojaProduto {
         this.nome = nome;
         this.marca = marca;
         this.link = link;
-        this.preco = preco;
-    }
-
-    public ResultadoLojaProduto(Integer id, Double preco){
-        this.id = id;
         this.preco = preco;
     }
 
@@ -39,22 +41,20 @@ public class ResultadoLojaProduto {
         this.nomeLoja = nomeLoja;
     }
 
-    
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 
     public Long getQuantidade() {

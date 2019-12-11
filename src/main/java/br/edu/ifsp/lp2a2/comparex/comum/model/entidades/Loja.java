@@ -13,7 +13,7 @@ public class Loja {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String Nome;
+	private String nome;
 	
 	@OneToMany(mappedBy="loja")
     private Set<LojaProduto> lojasProdutos;
@@ -25,10 +25,10 @@ public class Loja {
 		this.id = id;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 	
 	
