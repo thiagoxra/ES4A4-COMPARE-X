@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Produto/* implements Comparable<Produto> */{
+public class Produto{
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -17,6 +17,13 @@ public class Produto/* implements Comparable<Produto> */{
     private String imagem;
     private String nome;
     private String marca;
+
+    public Produto(){}
+    public Produto(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     
     @OneToMany(mappedBy="produto")
     private Set<LojaProduto> lojasProdutos;
@@ -56,7 +63,9 @@ public class Produto/* implements Comparable<Produto> */{
 	}
 	public void setLojasProdutos(Set<LojaProduto> lojasProdutos) {
 		this.lojasProdutos = lojasProdutos;
-	}
+    }
+    
+
 	
 	/*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,6 +1,8 @@
 package br.edu.ifsp.lp2a2.comparex.unitarios.controller;
 
 import br.edu.ifsp.lp2a2.comparex.comum.controllers.HomeController;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.Produto;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
 
@@ -18,12 +20,16 @@ import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
 
 public class HomeControllerTest {
-    ProdutosRespository repository;
+    private ProdutosRespository produtosRepository;
+	private LojasProdutosRepository lojasProdutosRepository;
+	private LojasRepository lojasRepository;
     HomeController homeController;
     List<Produto> list;
     public HomeControllerTest(){
-        this.repository = Mockito.mock(ProdutosRespository.class);
-        this.homeController = new HomeController(repository);
+        this.produtosRepository = Mockito.mock(ProdutosRespository.class);
+        this.lojasProdutosRepository = Mockito.mock(LojasProdutosRepository.class);
+        this.lojasRepository = Mockito.mock(LojasRepository.class);
+        this.homeController = new HomeController(produtosRepository, lojasProdutosRepository, lojasRepository);
         this.list = new ArrayList<>();
         this.list.add(new Produto(1, "Massa"));
         this.list.add(new Produto(2, "Cimento"));
