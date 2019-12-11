@@ -70,4 +70,20 @@ public class HomeControllerTest {
         String atual = homeController.lojas(1).getViewName();
         assertEquals(esperado, atual);
     }
+
+    @Test
+    public void endereco_correto_em_ordenarEmLojas() {
+        String esperado = "comum/loja";
+        String atual = homeController.ordenarEmLojas(1, "menorpreco").getViewName();
+        assertEquals(esperado, atual);
+    }
+
+    @Test
+    public void endereco_correto_em_ordenarEmVerPrecos() {
+        String esperado = "comum/verprecos";
+        String atual = this.homeController.ordenarEmVerPrecos(1, "menorpreco");
+        assertEquals(esperado, atual);
+    }
+
+
 }

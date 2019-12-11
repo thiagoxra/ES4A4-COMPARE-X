@@ -31,9 +31,7 @@ public class HomeController {
 		return mv;
 	}
 
-	@GetMapping(value = "/search", params = {
-		"pesquisar"
-	})
+	@GetMapping(value = "/search", params = {"pesquisar"})
 	public ModelAndView resultado(String pesquisar) {
 		ModelAndView mv = new ModelAndView("comum/resultado");
 		mv.addObject("lojas", lojasRepository.findAll());
@@ -51,9 +49,7 @@ public class HomeController {
 		return mv;
 	}
 
-	@GetMapping(value = "/verprecos/{id}", params = {
-		"ordenacao"
-	})
+	@GetMapping(value = "/verprecos/{id}", params = {"ordenacao"})
 	public ModelAndView ordenarEmVerPrecos(@PathVariable int id, String ordenacao) {
 		ModelAndView mv = new ModelAndView("comum/verprecos");
 		mv.addObject("lojas", lojasRepository.findAll());
@@ -79,9 +75,7 @@ public class HomeController {
 		return mv;
 	}
 
-	@GetMapping(value = "/loja/{id}", params = {
-		"ordenacao"
-	})
+	@GetMapping(value = "/loja/{id}", params = {"ordenacao"})
 	public ModelAndView ordenarEmLojas(@PathVariable int id, String ordenacao) {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
