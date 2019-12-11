@@ -81,7 +81,7 @@ public class HomeControllerTest {
     @Test
     public void endereco_correto_em_ordenarEmVerPrecos() {
         String esperado = "comum/verprecos";
-        String atual = this.homeController.ordenarEmVerPrecos(1, "menorpreco");
+        String atual = this.homeController.ordenarEmVerPrecos(7109176, "menorpreco");
         assertEquals(esperado, atual);
     }
 
