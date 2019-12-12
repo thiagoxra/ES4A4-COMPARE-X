@@ -87,5 +87,16 @@ public class HomeControllerTest {
         assertEquals(esperado, atual);
     }
 
+    @Test
+    public void resultado_busca_return_Umtemplate() {
+        // Configuracao
+        HomeController controller = new HomeController(this.pRepository, this.lpRepository, this.lRepository);
+        String expected = "comum/resultado";
+        // Execução
+        String actual = controller.resultado("tinta").getViewName();
+        //Comparacao
+        assertEquals(expected, actual);
+    }
+
 
 }
