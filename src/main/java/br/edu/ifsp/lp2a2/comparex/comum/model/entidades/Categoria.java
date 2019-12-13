@@ -1,6 +1,6 @@
 package br.edu.ifsp.lp2a2.comparex.comum.model.entidades;
 
-public class ResultadoLojaProduto {
+public class Categoria {
     private Integer id;
     private Double preco;
     private Long quantidade;
@@ -10,37 +10,20 @@ public class ResultadoLojaProduto {
     private String link;
     private String nomeLoja;
 
-    public ResultadoLojaProduto(Integer id, Double preco){
+
+    public Categoria(Integer id, Double preco, Long quantidade, String imagem, String nome, String marca, String link,
+            String nomeLoja) {
         this.id = id;
         this.preco = preco;
-    }
-
-    public ResultadoLojaProduto(Integer id, Long quantidade){
-        this.id = id;
         this.quantidade = quantidade;
-    }
-
-    
-
-    public ResultadoLojaProduto(Integer id, String imagem, String nome, String marca, String link, Double preco) {
-        this.id = id;
         this.imagem = imagem;
         this.nome = nome;
         this.marca = marca;
         this.link = link;
-        this.preco = preco;
-    }
-
-    public ResultadoLojaProduto(Integer id, String imagem, String nome, String marca, String link, Double preco, String nomeLoja) {
-        this.id = id;
-        this.imagem = imagem;
-        this.nome = nome;
-        this.marca = marca;
-        this.link = link;
-        this.preco = preco;
         this.nomeLoja = nomeLoja;
     }
 
+    
     public Integer getId() {
         return id;
     }
@@ -104,4 +87,9 @@ public class ResultadoLojaProduto {
     public void setNomeLoja(String nomeLoja) {
         this.nomeLoja = nomeLoja;
     }
-c
+
+
+
+    
+
+}
