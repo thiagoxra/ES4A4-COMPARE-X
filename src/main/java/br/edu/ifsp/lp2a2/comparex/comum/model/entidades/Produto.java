@@ -2,11 +2,18 @@ package br.edu.ifsp.lp2a2.comparex.comum.model.entidades;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 public class Produto{
@@ -17,6 +24,12 @@ public class Produto{
     private String imagem;
     private String nome;
     private String marca;
+    @Column(name="id_fabricante") //Notação JPA indica para Hibernate a leitura do dado
+    private int idFabricante;
+    @Column(name="id_cor")
+    private int idCor;
+    @Column(name="id_acabamento")
+    private int idAcabamento;
 
     public Produto(){}
     public Produto(int id, String nome) {
@@ -24,6 +37,17 @@ public class Produto{
         this.nome = nome;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_fabricante", insertable=false, updatable=false)
+    private Fabricante fabricante;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_cor", insertable=false, updatable=false)
+    private Cor cor;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_acabamento", insertable=false, updatable=false)
+    private Acabamento acabamento;
     
     @OneToMany(mappedBy="produto")
     private Set<LojaProduto> lojasProdutos;
@@ -64,115 +88,52 @@ public class Produto{
 	public void setLojasProdutos(Set<LojaProduto> lojasProdutos) {
 		this.lojasProdutos = lojasProdutos;
     }
-    
 
-	
-	/*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String descricao;
-    private String nome;
-    private double preco;
-    private String unid;
-    private String marca;
-    private String imagem;
-    private String acabamento;
-    private String categoria;
-    private String embalagem;
-    private String cor;
-    
-    private Long pontuacao;
-    
-    public Long getId() {
-        return id;
+    public int getIdFabricante() {
+        return idFabricante;
     }
-    public String getDescricao() {
-        return descricao;
+
+    public void setIdFabricante(int idFabricante) {
+        this.idFabricante = idFabricante;
     }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+
+    public int getIdCor() {
+        return idCor;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setIdCor(int idCor) {
+        this.idCor = idCor;
     }
-    public String getNome() {
-        return nome;
+
+    public int getIdAcabamento() {
+        return idAcabamento;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+
+    public void setIdAcabamento(int idAcabamento) {
+        this.idAcabamento = idAcabamento;
     }
-    public double getPreco() {
-        return preco;
+
+    public Fabricante getFabricante() {
+        return fabricante;
     }
-    public void setPreco(double preco) {
-        this.preco = preco;
+
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
     }
-    public String getUnid() {
-        return unid;
-    }
-    public void setUnid(String unid) {
-        this.unid = unid;
-    }
-    public String getMarca() {
-        return marca;
-    }
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-    public String getImagem() {
-        return imagem;
-    }
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
-    public String getAcabamento() {
-        return acabamento;
-    }
-    public void setAcabamento(String acabamento) {
-        this.acabamento = acabamento;
-    }
-    public String getCategoria() {
-        return categoria;
-    }
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-    public String getEmbalagem() {
-        return embalagem;
-    }
-    public void setEmbalagem(String embalagem) {
-        this.embalagem = embalagem;
-    }
-    public String getCor() {
+
+    public Cor getCor() {
         return cor;
     }
-    public void setCor(String cor) {
+
+    public void setCor(Cor cor) {
         this.cor = cor;
     }
-    public void adicionarPontuacao(){
-        ++this.pontuacao;
+
+    public Acabamento getAcabamento() {
+        return acabamento;
     }
-    
-    public Long getPontuacao(){
-        return this.pontuacao;
+
+    public void setAcabamento(Acabamento acabamento) {
+        this.acabamento = acabamento;
     }
-    @Override
-    public int compareTo(Produto another){
-        return (this.pontuacao == another.pontuacao) ? 0 : 
-               (this.pontuacao > another.pontuacao) ? 1 :
-               -1;
-    }
-    public Produto(){}
-    public Produto(Long id, String descricao, Long pontuacao){
-        this.id = id;
-        this.descricao = descricao;
-        this.pontuacao = pontuacao;
-    }
-    @Override
-    public boolean equals(Object obj){
-        Produto another = (Produto) obj;
-        return (this.id == another.id && 
-                this.descricao == another.descricao &&
-                this.pontuacao == another.pontuacao);
-    }*/
 }
