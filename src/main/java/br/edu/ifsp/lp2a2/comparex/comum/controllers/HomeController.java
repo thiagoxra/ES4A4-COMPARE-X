@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.AcabamentosRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
@@ -16,11 +17,13 @@ public class HomeController {
 	private ProdutosRespository produtosRepository;
 	private LojasProdutosRepository lojasProdutosRepository;
 	private LojasRepository lojasRepository;
+	private AcabamentosRepository acabamentosRepository;
 
-	public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository) {
+	public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository, AcabamentosRepository acabamentosRepository) {
 		this.produtosRepository = produtosRepository;
 		this.lojasProdutosRepository = lojasProdutosRepository;
 		this.lojasRepository = lojasRepository;
+		this.acabamentosRepository = acabamentosRepository;
 	}
 
 	@GetMapping("/")
@@ -72,6 +75,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
 		mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
+		mv.addObject("acabamentos", acabamentosRepository.findAll());
 		return mv;
 	}
 
@@ -79,6 +83,7 @@ public class HomeController {
 	public ModelAndView ordenarEmLojas(@PathVariable int id, String ordenacao) {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("acabamentos", acabamentosRepository.findAll());
 		if (ordenacao.equals("relevancia")) {
 			mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
 		} else if (ordenacao.equals("menorpreco")) {
@@ -90,6 +95,15 @@ public class HomeController {
 		} else if (ordenacao.equals("menornome")) {
 			mv.addObject("produtos", lojasProdutosRepository.ordenarPorMenorNomeEmLoja(id));
 		}
+		return mv;
+	}
+
+	@GetMapping(value = "/loja/{id}", params = {"acabamento"})
+	public ModelAndView filtrarPorAcabamento(@PathVariable int id, int acabamento) {
+		ModelAndView mv = new ModelAndView("comum/loja");
+		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("acabamentos", acabamentosRepository.findAll());
+		mv.addObject("produtos", acabamentosRepository.filtrarAcabamento(id, acabamento));
 		return mv;
 	}
 }

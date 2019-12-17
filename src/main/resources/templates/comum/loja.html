@@ -41,6 +41,10 @@
     <hr>
     <section>
         <div class="container">
+            <div id="acabamento">
+                <p>Acabamentos:</p>
+                <p th:each="acabamento : ${acabamentos}"><a th:text="${acabamento.nome}" th:href="@{'?acabamento=' + ${acabamento.id}}"></a></p>
+            </div>
                 <div id="ordenacao">
                     <p>Ordenar por:</p>
                     <p><a th:href="@{?ordenacao=relevancia}">Relevância</a></p>

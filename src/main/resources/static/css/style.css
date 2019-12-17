@@ -94,3 +94,9 @@ div#ordenacao {
     grid-template-columns: repeat(6, 1fr);
     padding: 10px;
 }
+
+div#acabamento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+}
