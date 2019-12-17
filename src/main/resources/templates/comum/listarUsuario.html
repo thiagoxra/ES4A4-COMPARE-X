@@ -11,51 +11,45 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/fontawesome.min.css">
 
-    <title>Resultado da Busca</title>
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>compareX</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
-
 <body>
-<div class="container-fluid">
-    <form method="get" th:object="${produto}" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
-        <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
-        <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
-               aria-label="Search">
-        <div class="col-sm-4">
-            <button type="submit" id="comparar" class="btn btn-warning">Pesquisar <img th:src="@{/img/search-solid.svg}" alt="" height="14" width="14"></button>
-        </div>
-    </form>
 
-</div>
-<div class="container">
-    <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-            <a class="p-2 text-muted" th:each="loja : ${lojas}" th:text="${loja.nome}" th:href="@{'/loja/'+${loja.id}}"></a>
-        </nav>
-    </div>
-</div>
-<hr>
-<section>
-    <div class="container">
-        <div id="index">
-            <!-- <th:block th:each="produto : ${produtos}"> -->
-            <div class="card" th:each="produto : ${produtos}">
-                <p id="id-produto" th:text="${produto.id}"></p>
-                <a class="product-image" href="#">
-                    <img th:src="${produto.imagem}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${produto.nome}"><a href="#"></a></h5>
-                    <small>a partir de:</small>
-                    <p class="card-text" th:each="preco : ${precos}" th:if="(${preco.id} == ${produto.id})" th:text="'R$ ' + ${#numbers.formatDecimal(preco.preco, 0, 2)}"></p>
-                    <small class="card-price" th:each="quantidade : ${quantidades}" th:if="(${quantidade.id} == ${produto.id})" th:text="${quantidade.quantidade}+' lojas'"></small>
-                    <a th:href="@{'/verprecos/'+${produto.id}}" class="btn btn-primary">Ver preços</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-</hr>
+<div class="container-fluid">
+    <form  class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
+        <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
+
+    </form>
+    <div class="container-">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">nome</th>
+            <th scope="col">email</th>
+            <th scope="col">senha</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario: ${usuarios}">
+            <th scope="row" th:text="${usuario.id}"></th>
+            <td th:text="${usuario.nome}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.senha}"></td>
+
+          <td><a th:href="@{/usuarios/{id}/edit(id = ${usuario.id})}">Editar</a> </td>
+
+            <td><a th:href="@{/usuarios/{id}/delete(id = ${usuario.id})}">Deletar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
 <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
     <div class="row">
         <div class="col-12 col-md">
@@ -82,9 +76,9 @@
         </div>
     </div>
 </footer>
+</div>
 </body>
 </html>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

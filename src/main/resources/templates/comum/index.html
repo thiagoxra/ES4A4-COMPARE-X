@@ -19,19 +19,53 @@
     <div class="container-fluid">
     <form method="get" th:action="@{/search}" class="row navbar navbar-dark  bg-danger flex-md-nowrap p-4 px-md-4 mb-3 shadow">
         <a class="navbar-brand col-sm-3 col-md-3 mr-0" th:href="@{/}">CompareX</a>
-
             <input name="pesquisar" class="form-control form-control-danger w-50" type="text"id ="input_princi" placeholder="digite o produto"
                 aria-label="Search">
             <div class="col-sm-4">
                 <button type="submit" id="comparar" class="btn btn-warning">Pesquisar <img th:src="@{/img/search-solid.svg}" alt=""
                         height="14" width="14"></button>
-                      
+
             </div>
-        
+<!--        <div class="col-md-1">-->
+<!--            <a class="text-muted" href="/usuarios"> Bem vindo!!</a>-->
+<!--        </div>-->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Login">
+                Entrar
+            </button>
           </form>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login Usuário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/acesso/logar">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Senha</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <button type="submit" class="btn btn-warning">Entrar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                     <a type="button" class="btn btn-warning" href="/usuarios/create">Cadastrar novo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
                 <a class="p-2 text-muted" th:each="loja : ${lojas}" th:text="${loja.nome}" th:href="@{'/loja/'+${loja.id}}"></a>
@@ -55,8 +89,8 @@
                         <p class="card-text" th:text="${produto.nome}"></p>
                         <p class="card-text"><small class="text-muted">Ultimas atualizações</small></p>
                     </div>
-                </div>       
-        </div>
+                </div>
+
     </div>
     <footer class="pt-4 my-md-5 pt-md-5 border-top bg-light">
         <div class="row">
@@ -84,6 +118,7 @@
             </div>
         </div>
     </footer>
+    </div>
 </body>
 </html>
 
@@ -97,7 +132,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
 </body>
-
 </html>

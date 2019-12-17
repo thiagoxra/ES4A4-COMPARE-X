@@ -24,9 +24,9 @@ public class Produto{
         this.nome = nome;
     }
 
-    @OneToMany(mappedBy="produto")
-    private Set<Categoria> categorias;
-
+//    @OneToMany(mappedBy="produto")
+//    private Set<Categoria> categorias;
+//
 
     @OneToMany(mappedBy="produto")
     private Set<LojaProduto> lojasProdutos;

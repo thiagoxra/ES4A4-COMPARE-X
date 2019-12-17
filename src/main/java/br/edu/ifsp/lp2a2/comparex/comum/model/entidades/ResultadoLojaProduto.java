@@ -10,17 +10,16 @@ public class ResultadoLojaProduto {
     private String link;
     private String nomeLoja;
 
-    public ResultadoLojaProduto(Integer id, Double preco){
+    public ResultadoLojaProduto(Integer id, Double preco) {
         this.id = id;
         this.preco = preco;
     }
 
-    public ResultadoLojaProduto(Integer id, Long quantidade){
+    public ResultadoLojaProduto(Integer id, Long quantidade) {
         this.id = id;
         this.quantidade = quantidade;
     }
 
-    
 
     public ResultadoLojaProduto(Integer id, String imagem, String nome, String marca, String link, Double preco) {
         this.id = id;
@@ -104,4 +103,4 @@ public class ResultadoLojaProduto {
     public void setNomeLoja(String nomeLoja) {
         this.nomeLoja = nomeLoja;
     }
-c
+}
