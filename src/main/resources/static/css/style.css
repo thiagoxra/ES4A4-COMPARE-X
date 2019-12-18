@@ -100,3 +100,10 @@ div#acabamento {
     grid-template-columns: repeat(4, 1fr);
     padding: 10px;
 }
+
+
+/*div#cor {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+}*/

@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.AcabamentosRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasProdutosRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.LojasRepository;
 import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.ProdutosRespository;
-
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.AcabamentosRepository;
+import br.edu.ifsp.lp2a2.comparex.comum.model.entidades.CoresRepository;
 
 @Controller
 public class HomeController {
@@ -18,12 +18,14 @@ public class HomeController {
 	private LojasProdutosRepository lojasProdutosRepository;
 	private LojasRepository lojasRepository;
 	private AcabamentosRepository acabamentosRepository;
+	private CoresRepository coresRepository;
 
-	public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository, AcabamentosRepository acabamentosRepository) {
+	public HomeController(ProdutosRespository produtosRepository, LojasProdutosRepository lojasProdutosRepository, LojasRepository lojasRepository, AcabamentosRepository acabamentosRepository, CoresRepository coresRepository) {
 		this.produtosRepository = produtosRepository;
 		this.lojasProdutosRepository = lojasProdutosRepository;
 		this.lojasRepository = lojasRepository;
 		this.acabamentosRepository = acabamentosRepository;
+		this.coresRepository = coresRepository;
 	}
 
 	@GetMapping("/")
@@ -104,6 +106,15 @@ public class HomeController {
 		mv.addObject("lojas", lojasRepository.findAll());
 		mv.addObject("acabamentos", acabamentosRepository.findAll());
 		mv.addObject("produtos", acabamentosRepository.filtrarAcabamento(id, acabamento));
+		return mv;
+	}
+
+	@GetMapping(value = "/loja/{id}", params = {"cor"})
+	public ModelAndView filtrarPorCor(@PathVariable int id, int cor) {
+		ModelAndView mv = new ModelAndView("comum/loja");
+		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("cores", coresRepository.findAll());
+		mv.addObject("produtos", coresRepository.filtrarCor(id, cor));
 		return mv;
 	}
 }
