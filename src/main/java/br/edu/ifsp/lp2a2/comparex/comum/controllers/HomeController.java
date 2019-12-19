@@ -78,6 +78,7 @@ public class HomeController {
 		mv.addObject("lojas", lojasRepository.findAll());
 		mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
 		mv.addObject("acabamentos", acabamentosRepository.findAll());
+		mv.addObject("cores", coresRepository.findAll());
 		return mv;
 	}
 
@@ -85,6 +86,7 @@ public class HomeController {
 	public ModelAndView ordenarEmLojas(@PathVariable int id, String ordenacao) {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("cores", coresRepository.findAll());
 		mv.addObject("acabamentos", acabamentosRepository.findAll());
 		if (ordenacao.equals("relevancia")) {
 			mv.addObject("produtos", lojasProdutosRepository.listarPorLoja(id));
@@ -104,6 +106,7 @@ public class HomeController {
 	public ModelAndView filtrarPorAcabamento(@PathVariable int id, int acabamento) {
 		ModelAndView mv = new ModelAndView("comum/loja");
 		mv.addObject("lojas", lojasRepository.findAll());
+		mv.addObject("cores", coresRepository.findAll());
 		mv.addObject("acabamentos", acabamentosRepository.findAll());
 		mv.addObject("produtos", acabamentosRepository.filtrarAcabamento(id, acabamento));
 		return mv;
